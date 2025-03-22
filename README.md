@@ -13,3 +13,5 @@ pkg install cowsay
 pkg install figlet
 ```
 kalau anda malas mengetik bisa ke setupBank.sh
+
+Copyright by © @ModderGabut 2025
