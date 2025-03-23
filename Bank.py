@@ -18,7 +18,7 @@ class Bank:
                 self.nasabah[nama] = saldo
             return self.nasabah
       except FileNotFoundError:
-        return {}
+        return main
       except Exception as e:
         print(f"Error: {e}")
 
@@ -53,7 +53,7 @@ class Bank:
         saldo_baru = saldo_int + jumlah_int
         self.nasabah[nama] = "{:,}".format(saldo_baru)
         self.save_data()
-        print(f"Setor {jumlah.replace(',', ',')} ke rekening {nama} berhasil. Saldo baru: {self.nasabah[nama]}")
+        print(f"Setor {jumlah.replace(',', ',')} ke rekening {nama} berhasil. Saldo: {self.nasabah[nama]}")
         t.sleep(1)
       else:
         print(f"Rekening {nama} tidak ditemukan.")
@@ -85,6 +85,7 @@ class Bank:
           o.system('clear')
       except FileNotFoundError:
         return main
+
     def about(self):
       o.system('clear')
       try:
