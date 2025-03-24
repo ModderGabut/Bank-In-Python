@@ -101,7 +101,6 @@ def main():
     o.system('clear')
     o.system('cowsay -f eyes Made By Modder_Gabut| lolcat')
     o.system('figlet Bank Menu | lolcat')
-    print(Fore.WHITE + Back.RED + Style.BRIGHT + "FORMAT HARUS ADA TANDA (,) KECUALI DI NO 1 " + Fore.RESET + Back.RESET)
     print("")
     print(Fore.GREEN + "1. Buat Rekening" + Fore.RESET)
     print(Fore.GREEN + "2. Cek Saldo" + Fore.RESET)
