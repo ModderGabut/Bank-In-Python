@@ -5,32 +5,32 @@ from colorama import Fore, Back, Style
 
 class Bank:
     def __init__(self):
-        self.nasabah = self.load_data()
-        
+        self.data_nasabah = self.load_data()
+
     def load_data(self):
-      try:
-        with open(".data.txt", "r") as file:
-            self.nasabah = {}
-            for line in file.readlines():
-                values = line.strip().split(",")
-                nama = values[0]
-                saldo = ",".join(values[1:])
-                self.nasabah[nama] = saldo
-            return self.nasabah
-      except FileNotFoundError:
-        return main
-      except Exception as e:
-        print(f"Error: {e}")
+        try:
+            with open(".data.txt", "r") as file:
+                self.data_nasabah = {}
+                for line in file.readlines():
+                    values = line.strip().split(",")
+                    nama = values[0]
+                    saldo = ",".join(values[1:])
+                    self.data_nasabah[nama] = saldo
+                return self.data_nasabah
+        except FileNotFoundError:
+            return {}
+        except Exception as e:
+            print(f"Error: {e}")
 
     def save_data(self):
-      with open(".data.txt", "w") as file:
-        for nama, saldo in self.nasabah.items():
-            saldo_int = int(saldo.replace(',', ''))
-            file.write(f"{nama},{saldo_int:,}\n")
+        with open(".data.txt", "w") as file:
+            for nama, saldo in self.data_nasabah.items():
+                saldo_int = int(saldo.replace(',', ''))
+                file.write(f"{nama},{saldo_int:,}\n")
 
     def buat_rekening(self, nama, saldo):
         o.system('clear')
-        self.nasabah[nama] = saldo
+        self.data_nasabah[nama] = saldo
         self.save_data()
         print(f"Rekening {nama} berhasil dibuat dengan saldo {saldo}.")
         t.sleep(1)
@@ -38,8 +38,8 @@ class Bank:
 
     def cek_saldo(self, nama):
         o.system('clear')
-        if nama in self.nasabah:
-            print(f"Saldo {nama} adalah {self.nasabah[nama]}.")
+        if nama in self.data_nasabah:
+            print(f"Saldo {nama} adalah {self.data_nasabah[nama]}.")
             t.sleep(1)
         else:
             print(f"Rekening {nama} tidak ditemukan.")
@@ -47,13 +47,13 @@ class Bank:
 
     def setor(self, nama, jumlah):
       o.system('clear')
-      if nama in self.nasabah:
+      if nama in self.data_nasabah:
         jumlah_int = int(jumlah.replace(',', '')) 
-        saldo_int = int(self.nasabah[nama].replace(',', ''))
+        saldo_int = int(self.data_nasabah[nama].replace(',', ''))
         saldo_baru = saldo_int + jumlah_int
-        self.nasabah[nama] = "{:,}".format(saldo_baru)
+        self.data_nasabah[nama] = "{:,}".format(saldo_baru)
         self.save_data()
-        print(f"Setor {jumlah.replace(',', ',')} ke rekening {nama} berhasil. Saldo: {self.nasabah[nama]}")
+        print(f"Setor {jumlah.replace(',', ',')} ke rekening {nama} berhasil. Saldo: {self.data_nasabah[nama]}")
         t.sleep(1)
       else:
         print(f"Rekening {nama} tidak ditemukan.")
@@ -61,11 +61,11 @@ class Bank:
 
     def tarik(self, nama, jumlah):
       o.system('clear')
-      if nama in self.nasabah:
-        saldo = int(self.nasabah[nama].replace(',', ''))
+      if nama in self.data_nasabah:
+        saldo = int(self.data_nasabah[nama].replace(',', ''))
         jumlah = int(jumlah.replace(',', ''))
         if saldo >= jumlah:
-            self.nasabah[nama] = "{:,}".format(saldo - jumlah)
+            self.data_nasabah[nama] = "{:,}".format(saldo - jumlah)
             self.save_data()
             print(f"Penarikan {jumlah} dari rekening {nama} berhasil.")
             t.sleep(0.5)
@@ -80,7 +80,7 @@ class Bank:
       try:
         with open(".data.txt", "r") as file:
           print(file.read())
-          print("\n(udin=nama nasbah/100000=uang/saldo)")
+          print("\n(nama,saldo)")
           t.sleep(3)
           o.system('clear')
       except FileNotFoundError:
@@ -101,8 +101,9 @@ def main():
     o.system('clear')
     o.system('cowsay -f eyes Made By Modder_Gabut| lolcat')
     o.system('figlet Bank Menu | lolcat')
+    print(Fore.WHITE + Back.RED + Style.BRIGHT + "FORMAT HARUS ADA TANDA (,) KECUALI DI NO 1 " + Fore.RESET + Back.RESET)
     print("")
-    print(Fore.GREEN + Style.BRIGHT + "1. Buat Rekening" + Fore.RESET)
+    print(Fore.GREEN + "1. Buat Rekening" + Fore.RESET)
     print(Fore.GREEN + "2. Cek Saldo" + Fore.RESET)
     print(Fore.BLUE + "3. Setor" + Fore.RESET)
     print(Fore.BLUE + "4. Tarik" + Fore.RESET)
