@@ -12,6 +12,18 @@ gem install lolcat
 pkg install cowsay
 pkg install figlet
 ```
+
+• Installation in Ubuntu:
+
+```bash
+sudo apt update && sudo apt upgrade
+sudo apt install python3
+pip3 install colorama
+sudo apt install rubygems
+sudo gem install lolcat
+sudo apt install cowsay
+sudo apt install figlet
+```
 kalau anda malas mengetik bisa ke setupBank.sh
 
 Copyright by © @ModderGabut 2025
