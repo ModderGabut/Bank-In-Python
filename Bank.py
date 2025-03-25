@@ -99,7 +99,7 @@ def main():
   bank = Bank()
   while True:
     o.system('clear')
-    o.system('cowsay -f eyes Made By Modder_Gabut| lolcat')
+    o.system('cowsay -f eyes Made By ModderGabut24| lolcat')
     o.system('figlet Bank Menu | lolcat')
     print("")
     print(Fore.GREEN + "1. Buat Rekening" + Fore.RESET)
